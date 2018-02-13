@@ -1954,3 +1954,78 @@ ship "Science Drone"
 		"heat dissipation" 1
 	explode "tiny explosion" 5
 	explode "small explosion" 2
+
+
+mission "Sapere Serva Aude 1"
+	name "Take Doctor Thales to Glory"
+	description `Head to Glory to pick up some of Doctor Thales's colleagues and students for a tour across the galaxy.`
+	minor
+	source
+		near Wazn 1 10
+		government "Republic" "Deep"
+	destination "Glory"
+	passengers 1
+	to offer
+		has "Record academic conference: done" > 1
+	on offer
+		conversation
+			`A bespectacled woman calls to you from across the spaceport. "Excuse me!" she says, waving as she hurries over. "Captain <first> <last>, I presume?"
+			choice
+				`	"That depends, who's asking?"`
+				`	"That's me."`
+			`	"Thales, Doctor Agathe Thales, pronounced like 'thay-leez', spelled like 'whales' with a 'T'," she says quickly, extending her hand. "I'm with the Aude Institute at the Academy of Planetary Sciences. I understand that you've done some work recording one of our conferences. I was wondering if you'd be interested in doing some further work to advance human knowledge. There's an excellent little coffee shop just around the corner if you'd like to sit and discuss the details."`
+			choice
+				`	"I'm interested. Let's chat."`
+                    goto coffee
+				`	"That depends. How's the pay?"`
+				    goto shameless_capitalist
+				`	"I'm a bit busy right now, but maybe some other time?"`
+                    defer
+				`	"Sorry, doesn't sound like my sort of work."`
+                    decline
+			label shameless_capitalist
+			`She smiles. "Academics, as a rule, claim to be poor. I can offer you <payment> and the satisfaction of knowing that you've helped keep the flame of knowledge burning for the next generation."`
+			choice
+			    `"Alright, I'm interested. Let's have coffee."`
+			        goto coffee
+			    `"Thanks, but no, thanks."`
+			        decline
+			label coffee
+			`Doctor Thales wasn't exaggerating, the coffee is excellent.
+			"So," she says, after a few pleasantries, "how well do you understand your ship?"
+			choice
+                `"I know the <flagship> like the back of my hand."`
+                `"Well enough to fly it."`
+			`She nods. "What would you say if I told you that the number of people who understand all of your ship's systems could be counted on one hand? I'd hazard that the number of people who understand the hyperdrive alone is fewer than ten." She pauses, a bit dramatically. "That should worry you."`
+			`"Consider how dependent our civilization is on the hyperdrive. Suppose we lost the art of manufacturing them? What if an alien race or some human faction decided to assassinate or capture the handful of humans who knew how they worked? What if a more mundane accident, or simple old age led to their untimely deaths before they could pass on their knowledge?"`
+			choice
+                `"Plenty of factories can manufacture hyperdrives. I'm sure we'd be able to rebuild the physics from that practical understanding."`
+                    `"It's not as simple as that. Every single one of the factories where hyperdrives are manufactured rely heavily on automated solutions to handle the really technical parts. Each of those automated systems were custom designed and built with heavy consultation from the living corpus of experts. Every one of them has idiosyncrasies to accommodate the conditions on their home planet; local gravity, atmosphere, the number of hyperspace links into and out of that star system... all of these things have subtle, powerful impacts that only an expert can properly take into account."`
+                `"Don't you geniuses teach classes at your academies?"`
+                    `She sighs. "We do our best, but it's difficult to recruit upper division students for the kind of coursework. For one, half of the experts you might study under are atrocious teachers. At least two have been removed from their teaching duties entirely to focus on research. For another, there's competition. Terraforming and life extension medicine are more lucrative and prestigious than astrophysics, so a majority of students choose to go into those fields. Coupled with the private sector, we're lucky to retain one Ph.D. candidate from a class of thirty masters. You don't hear much about it on the news, but the number of students seeking terminal degrees in science and engineering has been going down steadily for the past fifty years." She pauses to stir her coffee. "I fear that humanity may be on the precipice of a new dark age."`
+                `"But surely the knowledge is written down somewhere!"`
+                    `"Sure it is," she says. "There's a hefty curriculum with dozens of dense textbooks, not to mention academic periodicals. Do you imagine that's enough? Imagine trying to learn another language from a book. Only it's not just another language, you need to get deep knowledge of the culture that speaks that language, including their history, values, and taboos so that you can avoid giving offense. Then, you have to take that knowledge and defuse a war that is about to go nuclear." Again, she gives a dramatic pause. "Now, imagine that instead of learning how to do that from a book, you could instead have a teacher who was deeply familiar with that culture guide you through the process of understanding that culture, filling in gaps where the book was difficult or unclear to you. That teacher can correct your misconceptions, and check your understanding. Tell me, Captain, which education would you rather have to guide you through a diplomatic crisis?"`
+
+            `"Okay," you say, "I see your concern. So what do you need from me, to, uh... "keep the flame of knowledge alive?" as you put it?"`
+            `She brightens. "Many things, potentially, but first among them, I want to talk to you about project Lucerna." She takes a data chip from her purse. "For the past few years, I and some colleagues have been working overtime, recording, editing, and annotating our lectures, putting together a "curriculum in a box", if you will. Enough instruction to take someone from a bachelor's degree to a Ph.D. level of understanding, including exercises to engage with the material."`
+            `"Neat," you say, "but isn't that just a fancy textbook? And what do you need with a starship captain?"`
+            `"Hang on! I'm not finished! We've been distributing them on the interstellar communications network. A surprising number of people have been taking advantage. There have even been groups forming on different worlds trying to self educate as best they can, often in collaboration with local institutions of higher learning. We've been trying to help them remotely, but we feel like it's time to take the show on the road. I want you to take myself and a handful of other faculty to visit these worlds. We're going to hold seminars and try to assess how advanced the different members are in their understanding. With any luck, I'll even be extending a few scholarships."`
+            `"Fine," you say, "but if you'll pardon my asking, if all you wanted was transport, why didn't you just post it on the job board? You certainly didn't need to hunt me down."`
+            `She pauses. "I saw you at the conference. Do you recall Doctor Strausburg's presentation on how measurements of alien jump drives were helping clarify our understanding of the hyperdrive?" You nod. You remember how compelling the presentation was, particularly since you've seen the aliens phase in and out of space from your own ship's sensors.`
+         `"I saw you watching the presentations with such rapt attention; it was fairly technical. Doctor Strausburg was by no means the best speaker there that day, but still you were captivated. It underscored to me how what we do as scientists is not merely an academic pursuit for our own amusement, how what we do really, truly investigate things that people find beautiful and meaningful. We only have to find ways to communicate it that reach people where they are, instead of expecting them to come to us. I knew I wanted to be part of making that a reality for more people. It's a purely emotional decision, but it felt important to include you if I could." She pauses. "Also, since you've already done this for the institute twice, you're already a registered vendor, so I don't have to do as much paperwork."`
+         choice
+            `(laugh)`
+            `(raise an eyebrow)`
+         `"Seriously," she says, "you think modern astrophysics is hard? Try university bureaucracy. So, what do you think? Can you ferry myself and a few more idealistic academics around?"`
+			choice
+				"	(Accept.)"
+				"	(Decline.)"
+					decline
+			`"Excellent," she says. "Our first stop is back on Glory. I'll radio ahead to tell my students the trip is a go." She all but runs ahead of you back to your ship.`
+				accept
+
+	on complete
+		payment
+		payment 100000
+		conversation
+            `On landing, Doctor Thales hands you a data chip. "My contact info. I'm going to prep my students to leave today. We'll meet you in the spaceport in a few hours. If something comes up, shoot me a message."`
